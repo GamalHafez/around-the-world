@@ -1,0 +1,157 @@
+@use "@/styles/mixins" as *;
+
+// CSS Variables:
+:root {
+  --page-width: 144rem;
+  --base-gap: 5rem;
+
+  --page-bg: rgb(244, 249, 253);
+  --main-bg: #fafafa;
+  --text-color: rgba(243, 244, 246, 1);
+  --theme-bg: rgba(31, 41, 55, 1);
+
+  --Sudan-border-color: #075803;
+  --message-font-color: #8c0505;
+  --base-font-color: rgba(17, 24, 39, 1);
+  --box-border-color: rgba(17, 24, 39, 1);
+  --hover-font-color: #2070d8;
+  --light-font-color: rgba(55, 65, 81, 1);
+  --base-font-family: "Nunito", sans-serif;
+
+  --lighter-weight: 200;
+  --light-weight: 400;
+  --normal-weight: 400;
+  --semibold-weight: 600;
+  --bold-weight: 700;
+  --bolder-weight: 800;
+  --message-size: 4rem;
+  --base-country-name-size: 3.2rem;
+  --title-size: 2.4rem;
+  --text-size: 2rem;
+  --country-name-size: 1.8rem;
+  --country-info-size: 1.6rem;
+  --base-size: 1.4rem;
+
+  --border-radius: 0.5rem;
+  --transition-timing: 0.3s;
+  --base-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+@include dark-mode {
+  --page-bg: rgba(17, 24, 39, 1);
+  --main-bg: rgba(31, 41, 55, 1);
+  --base-font-color: rgba(243, 244, 246, 1);
+  --light-font-color: rgba(243, 244, 246, 1);
+  --box-border-color: rgb(61, 78, 106);
+  --hover-font-color: #7ba4d9;
+  --theme-bg: rgba(17, 24, 39, 1);
+}
+
+// Global Styles:
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  background: var(--page-bg);
+  font-family: var(--base-font-family);
+  color: var(--base-font-color);
+}
+
+#root {
+  width: var(--page-width);
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--base-gap);
+
+  @include mobile-version {
+    --page-width: 37.5rem;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+.loader {
+  align-self: center;
+  justify-self: center;
+  margin-block: 3rem;
+  width: 7rem;
+  height: 7rem;
+  border: 3px solid var(--base-font-color);
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  &::after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: var(--hover-font-color) transparent;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  text-align: center;
+  font-size: var(--message-size);
+  color: var(--message-font-color);
+  margin-block: var(--base-gap);
+  padding-block-end: var(--base-gap);
+  border-radius: 50%;
+  border-bottom: 0.2rem solid var(--message-font-color);
+}
+
+.error-message {
+  color: var(--message-font-color);
+  font-size: var(--base-size);
+  font-weight: var(--semibold-weight);
+  margin-block-start: 1rem;
+  margin-inline-start: 2rem;
+}

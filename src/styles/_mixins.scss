@@ -1,0 +1,30 @@
+@mixin pseudo($width) {
+  content: "";
+  width: $width;
+  height: $width;
+  max-width: 100%;
+}
+
+@mixin bg-img($url) {
+  background-image: url($url);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin transition($property) {
+  transition: $property var(--transition-timing) ease-in-out;
+}
+
+@mixin dark-mode($target: &) {
+  html[data-theme="dark"] #{$target} {
+    @content;
+  }
+}
+
+@mixin mobile-version {
+  @media (max-width: 550px) {
+    & {
+      @content;
+    }
+  }
+}

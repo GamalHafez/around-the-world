@@ -1,0 +1,115 @@
+@use "@/styles/mixins" as *;
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @include transition(background);
+  
+  @include mobile-version {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+.countries-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7rem 12rem;
+  margin-block: var(--base-gap);
+
+  @include mobile-version {
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+.country {
+  position: relative;
+  box-shadow: var(--base-shadow);
+  border-radius: 1rem;
+  padding: 1.7rem 2rem 4rem;
+  width: auto;
+  height: 30.6rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main-bg);
+
+  @include mobile-version {
+    width: 20.4rem;
+    height: 32.6rem;
+  }
+
+  &.Sudan,
+  &.Palestine {
+    border-left: 0.3rem solid;
+    border-right: 0.3rem solid;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2.5rem;
+      right: -0.6rem;
+      width: 5rem;
+      aspect-ratio: 1/1;
+    }
+    &:hover {
+      border-bottom: 0;
+    }
+  }
+
+  &.Palestine {
+    border-left-color: var(--message-font-color);
+    border-right-color: var(--message-font-color);
+
+    &::before {
+      @include bg-img("../assets/palestine.png");
+    }
+  }
+
+  &.Sudan {
+    border-left-color: var(--Sudan-border-color);
+    border-right-color: var(--Sudan-border-color);
+
+    &::before {
+      @include bg-img("../assets/sudan.png");
+    }
+  }
+
+  transition: border-bottom-color var(--transition-timing) ease-in-out,
+    box-shadow var(--transition-timing) ease-in-out,
+    transform var(--transition-timing) ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background: var(--card-bg-hover, var(--main-bg));
+    border-bottom: 0.2rem solid var(--hover-font-color);
+  }
+
+  &:hover h2 {
+    color: var(--hover-font-color);
+    display: flex;
+    gap: 0.6rem;
+    &::after {
+      @include pseudo(1.2rem);
+      @include bg-img("../assets/link.png");
+    }
+  }
+}
+
+.img {
+  width: 24.3rem;
+  height: 15.7rem;
+  border-radius: 0.8rem;
+}
+
+.name {
+  font-size: var(--country-name-size);
+  font-weight: var(--bolder-weight);
+  margin-block: 3.2rem 1.2rem;
+  @include transition(color);
+}

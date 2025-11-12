@@ -1,0 +1,18 @@
+@use "@/styles/mixins" as *;
+
+.info {
+  margin-block-start: auto;
+  font-size: var(--base-size);
+  font-weight: var(--light-weight);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  @include mobile-version {
+    gap: 1.2rem;
+  }
+
+  & strong {
+    font-weight: var(--bold-weight);
+  }
+}

@@ -1,0 +1,52 @@
+@use "@/styles/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--main-bg);
+  padding: 2rem 0;
+
+  @include mobile-version {
+    max-width: 100%;
+    padding-inline: 1.5rem;
+  }
+
+  &::before {
+    position: sticky;
+    top: 0;
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    background: var(--main-bg);
+    border-radius: var(--border-radius);
+    z-index: -1;
+    box-shadow: var(--base-shadow);
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  &__img {
+    width: 3rem;
+    aspect-ratio: 1/1;
+  }
+
+  &__title {
+    font-size: var(--title-size);
+    font-weight: var(--bold-weight);
+
+    @include mobile-version {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@use "@/styles/mixins" as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &.search::before {
+    content: "";
+    inset: 0;
+    width: 41.5rem;
+    height: 34.4rem;
+    @include bg-img("../assets/light-search-error.png");
+    @include dark-mode("&") {
+      @include bg-img("../assets/dark-search-error.png");
+    }
+  }
+
+  &.url::before {
+    content: "";
+    inset: 0;
+    width: 77.3rem;
+    height: 33rem;
+    @include bg-img("../assets/light-url-error.png");
+    @include dark-mode("&") {
+      @include bg-img("../assets/dark-url-error.png");
+    }
+  }
+
+  &__title {
+    font-size: var(--message-size);
+    font-weight: var(--semibold-weight);
+  }
+
+  &__text {
+    font-size: var(--text-size);
+    font-weight: var(--lighter-weight);
+    color: var(--base-font-color);
+    width: 40.7rem;
+    text-align: center;
+  }
+}

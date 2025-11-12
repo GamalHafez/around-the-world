@@ -1,0 +1,44 @@
+@use "@/styles/mixins" as *;
+
+.theme {
+  margin-inline-start: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 5.8rem;
+  height: 3.1rem;
+  border-radius: 6rem;
+  background: var(--theme-bg);
+
+  &__light,
+  &__dark {
+    cursor: pointer;
+    @include transition(background-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    width: 1.7rem;
+    height: 1.7rem;
+    // background: var(--theme-bg);
+
+    & img {
+      width: 1.1rem;
+    }
+  }
+
+  &__light {
+    background: var(--main-bg);
+  }
+}
+
+@include dark-mode(".theme__light") {
+  background: transparent;
+}
+
+@include dark-mode(".theme__dark") {
+  background: var(--base-font-color);
+}

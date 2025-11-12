@@ -1,0 +1,85 @@
+@use "@/styles/mixins" as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-gap) + 2rem);
+
+  @include mobile-version {
+    max-width: 100%;
+    padding-inline: 1.5rem;
+  }
+}
+
+.back {
+  cursor: pointer;
+  background: var(--main-bg);
+  border-radius: 0.6rem;
+  width: 4.2rem;
+  height: 4rem;
+  padding-block-start: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1),
+    0.1rem 0 0.2rem rgba(0, 0, 0, 0.1);
+
+  &::after {
+    @include pseudo(1.333rem);
+    @include bg-img("../assets/black-arrow.png");
+
+    @include dark-mode("&") {
+      @include bg-img("../assets/white-arrow.png");
+    }
+  }
+}
+
+.country {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  @include mobile-version {
+    grid-template-columns: 1fr;
+  }
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--base-gap);
+
+  & li {
+    font-size: var(--country-info-size);
+  }
+
+  @include mobile-version {
+    margin-block: 3rem 5rem;
+    grid-template-columns: 1fr;
+  }
+}
+
+.img {
+  width: 53rem;
+  height: 37.1rem;
+  box-shadow: 0 0 0.9rem 0.4rem rgba(0, 0, 0, 0.1);
+  @include mobile-version {
+    width: 32rem;
+    height: 22.9rem;
+  }
+}
+
+.name {
+  grid-column: 1/-1;
+  font-size: var(--base-country-name-size);
+  font-weight: var(--bolder-weight);
+}
+
+.additional {
+  justify-self: center;
+
+  margin-block: 0;
+
+  @include mobile-version {
+    justify-self: start;
+  }
+}
